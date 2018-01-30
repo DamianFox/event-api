@@ -1,1 +1,1 @@
-# event-api
+# Events Api
