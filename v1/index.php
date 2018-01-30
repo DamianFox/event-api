@@ -26,7 +26,7 @@ $app->get("/", function () {
 $app->get('/events', function() {
     $db = new DbHandler();
     $response = array();
-    
+
     // fetch events
     $result = $db->getAllEvents();
 
@@ -102,7 +102,7 @@ $app->post('/events', function() {
     } elseif($event->type == "Other activity" || $event->type == "other activity") {
         $img = "http://www.damianofossa.com/joinapp/img/event.jpg";
     }
-    
+
     $sql = "INSERT INTO event (title, location, date, time, ageMin, ageMax, groupSize, limited, maxParticipants, joining, description, img, type, language) VALUES ('".$event->title."', '".$event->location."', '".$event->date."', '".$event->time."', '".$ageMin."', '".$ageMax."', '".$event->groupSize."', '".$event->limited."', '".$event->maxParticipants."', '".$event->joining."', '".$event->description."', '".$img."', '".$event->type."', '".$language."')";
 
     try {
@@ -153,8 +153,6 @@ $app->put('/event/:id', function ($id) {
     } else {
         echoResponse(404, '{"error":{"text": error }}');
     }
-
-    //$sql = "UPDATE event SET joining=".$joining." WHERE ID=".$id;
 });
 
 $app->options('/event/:id', function ($id) {});
